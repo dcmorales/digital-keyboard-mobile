@@ -6,8 +6,8 @@ import Octave from './Octave';
 export default function Keyboard() {
   return (
     <View style={styles.keyboard}>
-      <Octave />
-      <Octave />
+      <Octave octNum="2" />
+      <Octave octNum="3" />
     </View>
   );
 }

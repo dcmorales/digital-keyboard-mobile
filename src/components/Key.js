@@ -1,16 +1,32 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { Audio } from 'expo-av';
 
-export default function Key({ color, note }) {
+import { sounds } from '../values/soundValues';
+
+export default function Key({ color, note, octNum }) {
+  const handleKeyPress = async noteFull => {
+    const soundObject = new Audio.Sound();
+
+    let source = sounds[noteFull];
+    await soundObject.loadAsync(source);
+    await soundObject.playAsync().then(async playbackStatus => {
+      setTimeout(() => {
+        soundObject.unloadAsync();
+      }, playbackStatus.playableDurationMillis);
+    });
+  };
+
   const { white, black, text } = styles;
+  const noteFull = `${note}${octNum}`;
   return (
     <>
       <TouchableOpacity
         activeOpacity={0.96}
         style={color === 'white' ? white : black}
-        onPress={() => console.log(`note is ${note}`)}
+        onPress={() => handleKeyPress(`${noteFull}`)}
       >
-        <Text style={color === 'black' ? text : null}>{note}</Text>
+        <Text style={color === 'black' ? text : null}>{noteFull}</Text>
       </TouchableOpacity>
     </>
   );
