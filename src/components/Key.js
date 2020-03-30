@@ -5,10 +5,10 @@ import { Audio } from 'expo-av';
 import { sounds } from '../values/soundValues';
 
 export default function Key({ color, note, octNum }) {
-  const handleKeyPress = async noteFull => {
+  const handleKeyPress = async (instrument, noteFull) => {
     const soundObject = new Audio.Sound();
 
-    let source = sounds[noteFull];
+    let source = sounds[instrument][noteFull];
     await soundObject.loadAsync(source);
     await soundObject.playAsync().then(async playbackStatus => {
       setTimeout(() => {
@@ -24,7 +24,7 @@ export default function Key({ color, note, octNum }) {
       <TouchableOpacity
         activeOpacity={0.96}
         style={color === 'white' ? white : black}
-        onPress={() => handleKeyPress(`${noteFull}`)}
+        onPress={() => handleKeyPress('piano', `${noteFull}`)}
       >
         <Text style={color === 'black' ? text : null}>{noteFull}</Text>
       </TouchableOpacity>
