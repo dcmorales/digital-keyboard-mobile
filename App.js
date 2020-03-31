@@ -3,13 +3,16 @@ import { StyleSheet, View } from 'react-native';
 
 import Header from './src/components/Header/Header';
 import Keyboard from './src/components/Keyboard/Keyboard';
+import SelectionStore from './src/context/SelectionContext';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Header />
-      <Keyboard />
-    </View>
+    <SelectionStore>
+      <View style={styles.container}>
+        <Header />
+        <Keyboard />
+      </View>
+    </SelectionStore>
   );
 }
 
