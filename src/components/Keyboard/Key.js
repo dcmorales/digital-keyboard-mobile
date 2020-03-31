@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import { Audio } from 'expo-av';
 
-import { sounds } from '../values/soundValues';
+import { sounds } from '../../values/soundValues';
 
 export default function Key({ color, note, octNum }) {
   const handleKeyPress = async (instrument, noteFull) => {
