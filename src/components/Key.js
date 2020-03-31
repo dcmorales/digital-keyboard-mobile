@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import { Audio } from 'expo-av';
 
 import { sounds } from '../values/soundValues';
@@ -21,20 +21,27 @@ export default function Key({ color, note, octNum }) {
   const noteFull = `${note}${octNum}`;
   return (
     <>
-      <TouchableOpacity
-        activeOpacity={0.96}
+      <TouchableHighlight
+        activeOpacity={0.5}
         style={color === 'white' ? white : black}
+        underlayColor={color === 'white' ? '#f7f7f7' : '#0b0b0b'}
         onPress={() => handleKeyPress('piano', `${noteFull}`)}
       >
-        <Text style={color === 'black' ? text : null}>{noteFull}</Text>
-      </TouchableOpacity>
+        <View style={text}>
+          <Text style={color === 'black' ? { color: '#fff' } : null}>
+            {noteFull}
+          </Text>
+        </View>
+      </TouchableHighlight>
     </>
   );
 }
 
 const styles = StyleSheet.create({
   text: {
-    color: '#fff',
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
   black: {
     backgroundColor: '#000',
