@@ -3,7 +3,7 @@ import { Picker, Text, View } from 'react-native';
 
 import { Context } from '../../context/SelectionContext';
 
-export default function Selections({ listName, item1, item2 }) {
+export default function Selections({ listName, item1, item2, item3 }) {
   const { selectedValue, setSelectedValue } = useContext(Context);
 
   return (
@@ -16,6 +16,7 @@ export default function Selections({ listName, item1, item2 }) {
       >
         <Picker.Item label={`${item1}`} value={`${item1}`} />
         <Picker.Item label={`${item2}`} value={`${item2}`} />
+        <Picker.Item label={`${item3}`} value={`${item3}`} />
       </Picker>
     </View>
   );

@@ -8,7 +8,12 @@ export default function Header() {
 
   return (
     <View style={container}>
-      <Selections listName="instrument" item1="piano" item2="cowbell" />
+      <Selections
+        listName="instrument"
+        item1="piano"
+        item2="cowbell"
+        item3="horn"
+      />
     </View>
   );
 }
