@@ -10,9 +10,7 @@ export default function Header() {
     <View style={container}>
       <Selections
         listName="instrument"
-        item1="piano"
-        item2="cowbell"
-        item3="horn"
+        listItems={['piano', 'cowbell', 'horn']}
       />
     </View>
   );
