@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import { Audio } from 'expo-av';
 
+import { Context } from '../../context/SelectionContext';
 import { sounds } from '../../values/soundValues';
 
 export default function Key({ color, note, octNum }) {
+  const { selectedValue } = useContext(Context);
+  const { white, black, text } = styles;
+  const noteFull = `${note}${octNum}`;
+  const instrument = selectedValue;
+
   const handleKeyPress = async (instrument, noteFull) => {
     const soundObject = new Audio.Sound();
 
@@ -17,15 +23,13 @@ export default function Key({ color, note, octNum }) {
     });
   };
 
-  const { white, black, text } = styles;
-  const noteFull = `${note}${octNum}`;
   return (
     <>
       <TouchableHighlight
         activeOpacity={0.5}
         style={color === 'white' ? white : black}
         underlayColor={color === 'white' ? '#f7f7f7' : '#0b0b0b'}
-        onPress={() => handleKeyPress('piano', `${noteFull}`)}
+        onPress={() => handleKeyPress(instrument, `${noteFull}`)}
       >
         <View style={text}>
           <Text style={color === 'black' ? { color: '#fff' } : null}>
