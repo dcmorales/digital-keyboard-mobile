@@ -3,16 +3,16 @@ import React, { useState } from 'react';
 export const Context = React.createContext();
 
 export default ({ children }) => {
-  const [selectedValue, setSelectedValue] = useState({
+  const [selectedValues, setSelectedValue] = useState({
     instrument: 'piano',
     scale: 'chromatic',
   });
 
   const handleSelectionChange = (name, itemValue) => {
-    setSelectedValue({ [name]: itemValue });
+    setSelectedValue({ ...selectedValues, [name]: itemValue });
   };
 
-  const { instrument, scale } = selectedValue;
+  const { instrument, scale, key } = selectedValues;
 
   const store = {
     instrument,
