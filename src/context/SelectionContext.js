@@ -6,6 +6,7 @@ export default ({ children }) => {
   const [selectedValues, setSelectedValue] = useState({
     instrument: 'piano',
     scale: 'chromatic',
+    key: 'C',
   });
 
   const handleSelectionChange = (name, itemValue) => {
@@ -17,6 +18,7 @@ export default ({ children }) => {
   const store = {
     instrument,
     scale,
+    key,
     handleSelectionChange,
   };
 
