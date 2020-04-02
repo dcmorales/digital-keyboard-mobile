@@ -5,8 +5,7 @@ import { Context } from '../../context/SelectionContext';
 import { playSound } from '../../helpers/playSound';
 
 export default function PlayButton() {
-  const { selectedValue } = useContext(Context);
-  const instrument = selectedValue;
+  const { instrument } = useContext(Context);
 
   return (
     <Button

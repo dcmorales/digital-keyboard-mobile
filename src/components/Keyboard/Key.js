@@ -5,10 +5,9 @@ import { Context } from '../../context/SelectionContext';
 import { playSound } from '../../helpers/playSound';
 
 export default function Key({ color, note, octNum }) {
-  const { selectedValue } = useContext(Context);
+  const { instrument } = useContext(Context);
   const { white, black, text } = styles;
   const noteFull = `${note}${octNum}`;
-  const instrument = selectedValue;
 
   return (
     <>
