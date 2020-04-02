@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Picker, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 import Selections from './Selections';
 
@@ -18,6 +18,7 @@ export default function Header() {
 
 const styles = {
   container: {
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },

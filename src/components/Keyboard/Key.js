@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
-import { Audio } from 'expo-av';
 
 import { Context } from '../../context/SelectionContext';
-import { sounds } from '../../values/soundValues';
+import { playSound } from '../../helpers/playSound';
 
 export default function Key({ color, note, octNum }) {
   const { selectedValue } = useContext(Context);
@@ -11,25 +10,13 @@ export default function Key({ color, note, octNum }) {
   const noteFull = `${note}${octNum}`;
   const instrument = selectedValue;
 
-  const handleKeyPress = async (instrument, noteFull) => {
-    const soundObject = new Audio.Sound();
-
-    let source = sounds[instrument][noteFull];
-    await soundObject.loadAsync(source);
-    await soundObject.playAsync().then(async playbackStatus => {
-      setTimeout(() => {
-        soundObject.unloadAsync();
-      }, playbackStatus.playableDurationMillis);
-    });
-  };
-
   return (
     <>
       <TouchableHighlight
         activeOpacity={0.5}
         style={color === 'white' ? white : black}
         underlayColor={color === 'white' ? '#f7f7f7' : '#0b0b0b'}
-        onPress={() => handleKeyPress(instrument, `${noteFull}`)}
+        onPress={() => playSound.handleKeyPress(instrument, `${noteFull}`)}
       >
         <View style={text}>
           <Text style={color === 'black' ? { color: '#fff' } : null}>
