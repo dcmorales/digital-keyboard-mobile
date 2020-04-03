@@ -6,8 +6,8 @@ import { defineScale } from '../../helpers/defineScale';
 import { playScale } from '../../helpers/playScale';
 
 export default function PlayButton() {
-  const { instrument, key } = useContext(Context);
-  const combinedNotes = defineScale.renderNotes(instrument, key);
+  const { instrument, key, scale } = useContext(Context);
+  const combinedNotes = defineScale.renderNotes(instrument, key, scale);
 
   return (
     <Button

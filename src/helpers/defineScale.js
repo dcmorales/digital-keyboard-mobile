@@ -1,8 +1,9 @@
 import { selectionOptions } from '../values/selectionOptions';
+import { cutPoints } from '../values/cutPoints';
 
 export const defineScale = {
-  renderNotes(instrument, key) {
-    const { keyOpts } = selectionOptions;
+  renderNotes(instrument, key, scale) {
+    const { keyOpts, scaleOpts } = selectionOptions;
     const indexOfKey = keyOpts.indexOf(key);
     //gets new start point for scale based on selected key's index
     const newStartPoint = keyOpts.slice(indexOfKey, 12);
@@ -15,6 +16,25 @@ export const defineScale = {
     //combines the three arrays into single array to represent scale
     const combinedNotes = octave2Notes.concat(octave3notes, lastNote);
 
-    return { instrument, combinedNotes };
+    if (scale === 'chromatic') {
+      return { instrument, combinedNotes };
+    } else {
+      const scaleNum = scaleOpts.indexOf(`${scale}`) - 1;
+      //uses defined cut points for each scale to get correct notes in scale
+      const scaleNotes = cutPoints[1][scaleNum].map(point =>
+        combinedNotes.slice(point[0], point[1])
+      );
+      const scaleCombined = scaleNotes[0].concat(
+        scaleNotes[1],
+        scaleNotes[2],
+        scaleNotes[3],
+        scaleNotes[4],
+        scaleNotes[5]
+      );
+      const slicePoint = cutPoints[0][indexOfKey][scaleNum];
+      const scaleNow = scaleCombined.slice(0, slicePoint);
+      const scaleNext = scaleCombined.slice(slicePoint, 8);
+      return { instrument, combinedNotes: scaleNow.concat(scaleNext) };
+    }
   },
 };
