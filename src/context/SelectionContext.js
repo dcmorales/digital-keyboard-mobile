@@ -7,18 +7,20 @@ export default ({ children }) => {
     instrument: 'piano',
     scale: 'chromatic',
     key: 'C',
+    order: 'ascending',
   });
 
   const handleSelectionChange = (name, itemValue) => {
     setSelectedValue({ ...selectedValues, [name]: itemValue });
   };
 
-  const { instrument, scale, key } = selectedValues;
+  const { instrument, scale, key, order } = selectedValues;
 
   const store = {
     instrument,
     scale,
     key,
+    order,
     handleSelectionChange,
   };
 

@@ -18,5 +18,5 @@ export const selectionOptions = {
   keyOpts: ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'],
 
   //****************************************************************************
-  //orderOpts: ['ascending', 'descending', 'random'],
+  orderOpts: ['ascending', 'descending', 'random'],
 };

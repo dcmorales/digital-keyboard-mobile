@@ -8,9 +8,9 @@ import Selections from './Selections';
 import PlayButton from './PlayButton';
 
 export default function Header() {
-  const { instrument, scale, key } = useContext(Context);
+  const { instrument, scale, key, order } = useContext(Context);
   const { container } = styles;
-  const { instrumentOpts, scaleOpts, keyOpts } = selectionOptions;
+  const { instrumentOpts, scaleOpts, keyOpts, orderOpts } = selectionOptions;
 
   return (
     <View style={container}>
@@ -27,6 +27,12 @@ export default function Header() {
       />
 
       <Selections selectionValue={key} listName="key" listItems={keyOpts} />
+
+      <Selections
+        selectionValue={order}
+        listName="order"
+        listItems={orderOpts}
+      />
 
       <PlayButton />
     </View>
