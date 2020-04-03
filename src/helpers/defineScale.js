@@ -1,7 +1,5 @@
 import { selectionOptions } from '../values/selectionOptions';
 
-import { playSound } from './playSound';
-
 export const defineScale = {
   renderNotes(instrument, key) {
     const { keyOpts } = selectionOptions;
@@ -17,13 +15,6 @@ export const defineScale = {
     //combines the three arrays into single array to represent scale
     const combinedNotes = octave2Notes.concat(octave3notes, lastNote);
 
-    var offsetPlus = 200;
-
-    combinedNotes.forEach(note => {
-      setTimeout(() => {
-        playSound.handleNoteSound(instrument, note);
-      }, offsetPlus);
-      offsetPlus += 200;
-    });
+    return { instrument, combinedNotes };
   },
 };
