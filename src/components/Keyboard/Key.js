@@ -15,7 +15,7 @@ export default function Key({ color, note, octNum }) {
         activeOpacity={0.5}
         style={color === 'white' ? white : black}
         underlayColor={color === 'white' ? '#f7f7f7' : '#0b0b0b'}
-        onPress={() => playSound.handleKeyPress(instrument, `${noteFull}`)}
+        onPress={() => playSound.handleNoteSound(instrument, `${noteFull}`)}
       >
         <View style={text}>
           <Text style={color === 'black' ? { color: '#fff' } : null}>

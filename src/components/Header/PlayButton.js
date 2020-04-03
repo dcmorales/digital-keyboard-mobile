@@ -2,15 +2,15 @@ import React, { useContext } from 'react';
 import { Button } from 'react-native';
 
 import { Context } from '../../context/SelectionContext';
-import { playSound } from '../../helpers/playSound';
+import { defineScale } from '../../helpers/defineScale';
 
 export default function PlayButton() {
-  const { instrument } = useContext(Context);
+  const { instrument, key } = useContext(Context);
 
   return (
     <Button
       title="Play Keys"
-      onPress={() => playSound.handleKeyPress(instrument, 'C3')}
+      onPress={() => defineScale.renderNotes(instrument, key)}
     />
   );
 }
