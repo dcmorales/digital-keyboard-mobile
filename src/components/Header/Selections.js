@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Picker, Text, View } from 'react-native';
+import { Picker, Text, StyleSheet, View } from 'react-native';
 
 import { Context } from '../../context/SelectionContext';
 
@@ -7,11 +7,10 @@ export default function Selections({ listName, listItems, selectionValue }) {
   const { handleSelectionChange } = useContext(Context);
 
   return (
-    <View>
+    <View style={styles.selectionContainer}>
       <Text>{listName}</Text>
       <Picker
         selectedValue={selectionValue}
-        style={{ height: 50, width: 150 }}
         onValueChange={itemValue => handleSelectionChange(listName, itemValue)}
       >
         {listItems.map(item => (
@@ -21,3 +20,9 @@ export default function Selections({ listName, listItems, selectionValue }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  selectionContainer: {
+    flex: 1,
+  },
+});

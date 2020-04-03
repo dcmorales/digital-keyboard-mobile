@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { Context } from '../../context/SelectionContext';
 import { selectionOptions } from '../../values/selectionOptions';
@@ -9,11 +9,10 @@ import PlayButton from './PlayButton';
 
 export default function Header() {
   const { instrument, scale, key, order } = useContext(Context);
-  const { container } = styles;
   const { instrumentOpts, scaleOpts, keyOpts, orderOpts } = selectionOptions;
 
   return (
-    <View style={container}>
+    <View style={styles.headerContainer}>
       <Selections
         selectionValue={instrument}
         listName="instrument"
@@ -39,10 +38,11 @@ export default function Header() {
   );
 }
 
-const styles = {
-  container: {
+const styles = StyleSheet.create({
+  headerContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    marginHorizontal: 5,
   },
-};
+});
