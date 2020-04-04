@@ -6,8 +6,11 @@ import { defineScale } from '../../helpers/defineScale';
 import { playScale } from '../../helpers/playScale';
 
 export default function PlayButton() {
-  const { instrument, key, scale } = useContext(Context);
+  const { instrument, key, scale, order } = useContext(Context);
   const scaleInfoObject = defineScale.renderNotes(instrument, key, scale);
+  const { scaleNotes } = scaleInfoObject;
+  scaleInfoObject.scaleNotes =
+    order === 'descending' ? scaleNotes.reverse() : scaleNotes;
 
   return (
     <Button
