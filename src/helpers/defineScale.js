@@ -14,27 +14,28 @@ export const defineScale = {
     const octave3notes = oldStartPoint.map(note => `${note}3`);
     const lastNote = [`${key}3`];
     //combines the three arrays into single array to represent scale
-    const combinedNotes = octave2Notes.concat(octave3notes, lastNote);
+    const scaleNotes = octave2Notes.concat(octave3notes, lastNote);
 
     if (scale === 'chromatic') {
-      return { instrument, combinedNotes };
+      return { instrument, scaleNotes };
     } else {
       const scaleNum = scaleOpts.indexOf(`${scale}`) - 1;
       //uses defined cut points for each scale to get correct notes in scale
-      const scaleNotes = cutPoints[1][scaleNum].map(point =>
-        combinedNotes.slice(point[0], point[1])
+      const partialScale = cutPoints[1][scaleNum].map(point =>
+        scaleNotes.slice(point[0], point[1])
       );
-      const scaleCombined = scaleNotes[0].concat(
-        scaleNotes[1],
-        scaleNotes[2],
-        scaleNotes[3],
-        scaleNotes[4],
-        scaleNotes[5]
+      //combines all arrays containing partial scale notes into a single array
+      const scaleCombined = partialScale[0].concat(
+        partialScale[1],
+        partialScale[2],
+        partialScale[3],
+        partialScale[4],
+        partialScale[5]
       );
       const slicePoint = cutPoints[0][indexOfKey][scaleNum];
       const scaleNow = scaleCombined.slice(0, slicePoint);
       const scaleNext = scaleCombined.slice(slicePoint, 8);
-      return { instrument, combinedNotes: scaleNow.concat(scaleNext) };
+      return { instrument, scaleNotes: scaleNow.concat(scaleNext) };
     }
   },
 };

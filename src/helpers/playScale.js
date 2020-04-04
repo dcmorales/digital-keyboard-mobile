@@ -1,10 +1,10 @@
 import { playSound } from './playSound';
 
 export const playScale = {
-  playNotes({ instrument, combinedNotes }) {
+  playNotes({ instrument, scaleNotes }) {
     var offsetPlus = 200;
 
-    combinedNotes.forEach(note => {
+    scaleNotes.forEach(note => {
       setTimeout(() => {
         playSound.handleNoteSound(instrument, note);
       }, offsetPlus);

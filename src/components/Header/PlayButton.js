@@ -7,12 +7,12 @@ import { playScale } from '../../helpers/playScale';
 
 export default function PlayButton() {
   const { instrument, key, scale } = useContext(Context);
-  const combinedNotes = defineScale.renderNotes(instrument, key, scale);
+  const scaleInfoObject = defineScale.renderNotes(instrument, key, scale);
 
   return (
     <Button
       title="Play Keys"
-      onPress={() => playScale.playNotes(combinedNotes)}
+      onPress={() => playScale.playNotes(scaleInfoObject)}
     />
   );
 }
