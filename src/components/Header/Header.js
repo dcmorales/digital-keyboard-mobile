@@ -8,7 +8,9 @@ import Selections from './Selections';
 import PlayButton from './PlayButton';
 
 export default function Header() {
-  const { instrument, scale, key, order, bpm } = useContext(Context);
+  const { instrument, scale, key, order, bpm, noteLength } = useContext(
+    Context
+  );
   const { instrumentOpts, scaleOpts, keyOpts, orderOpts } = selectionOptions;
 
   return (
@@ -34,6 +36,13 @@ export default function Header() {
       />
 
       <Selections selectionValue={bpm} listName="bpm" start="100" max="130" />
+
+      <Selections
+        selectionValue={noteLength}
+        listName="note length"
+        start="4"
+        max="32"
+      />
 
       <PlayButton />
     </View>
