@@ -8,19 +8,21 @@ export default ({ children }) => {
     scale: 'chromatic',
     key: 'C',
     order: 'ascending',
+    bpm: '125',
   });
 
   const handleSelectionChange = (name, itemValue) => {
     setSelectedValue({ ...selectedValues, [name]: itemValue });
   };
 
-  const { instrument, scale, key, order } = selectedValues;
+  const { instrument, scale, key, order, bpm } = selectedValues;
 
   const store = {
     instrument,
     scale,
     key,
     order,
+    bpm,
     handleSelectionChange,
   };
 
