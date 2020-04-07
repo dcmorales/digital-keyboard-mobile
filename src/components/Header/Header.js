@@ -39,7 +39,7 @@ export default function Header() {
 
       <Selections
         selectionValue={noteLength}
-        listName="note length"
+        listName="noteLength"
         start="4"
         max="32"
       />

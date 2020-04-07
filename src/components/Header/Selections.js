@@ -19,11 +19,7 @@ export default function Selections({
     } else {
       var optionsNum = [];
       var iNum = parseInt(start, 10);
-      for (
-        var i = iNum;
-        i <= max;
-        listName !== 'note length' ? i++ : (i *= 2)
-      ) {
+      for (var i = iNum; i <= max; listName !== 'noteLength' ? i++ : (i *= 2)) {
         optionsNum.push(i);
       }
       setOptions(optionsNum);
@@ -40,7 +36,7 @@ export default function Selections({
         {options.map(item => (
           <Picker.Item
             key={item}
-            label={listName === 'note length' ? `1/${item}` : `${item}`}
+            label={listName === 'noteLength' ? `1/${item}` : `${item}`}
             value={`${item}`}
           />
         ))}
