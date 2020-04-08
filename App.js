@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import Header from './src/components/Header/Header';
 import Keyboard from './src/components/Keyboard/Keyboard';
+import Footer from './src/components/Footer/Footer';
 import SelectionStore from './src/context/SelectionContext';
 
 export default function App() {
@@ -11,6 +12,7 @@ export default function App() {
       <View style={styles.container}>
         <Header />
         <Keyboard />
+        <Footer />
       </View>
     </SelectionStore>
   );

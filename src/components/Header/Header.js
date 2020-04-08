@@ -5,7 +5,6 @@ import { Context } from '../../context/SelectionContext';
 import { selectionOptions } from '../../values/selectionOptions';
 
 import Selections from './Selections';
-import PlayButton from './PlayButton';
 
 export default function Header() {
   const { instrument, scale, key, order, bpm, noteLength } = useContext(
@@ -43,8 +42,6 @@ export default function Header() {
         start="4"
         max="32"
       />
-
-      <PlayButton />
     </View>
   );
 }
