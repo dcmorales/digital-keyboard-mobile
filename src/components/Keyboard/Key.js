@@ -6,8 +6,8 @@ import { defineScale } from '../../helpers/defineScale';
 import { playSound } from '../../helpers/playSound';
 
 export default function Key({ color, note, octNum }) {
-  const { instrument, key, scale } = useContext(Context);
-  const { white, black, text, scaleNote } = styles;
+  const { instrument, key, scale, activeNote } = useContext(Context);
+  const { white, black, text, scaleNote, currentNote } = styles;
   const noteFull = `${note}${octNum}`;
   const { scaleNotes } = defineScale.renderNotes(key, scale);
 
@@ -24,6 +24,7 @@ export default function Key({ color, note, octNum }) {
             style={[
               color === 'black' ? { color: '#fff' } : null,
               scaleNotes.includes(`${noteFull}`) ? scaleNote : null,
+              activeNote.includes(`${noteFull}`) ? currentNote : null,
             ]}
           >
             {noteFull}
@@ -57,5 +58,11 @@ const styles = StyleSheet.create({
   scaleNote: {
     color: '#3399ff',
     marginBottom: 20,
+    fontWeight: '700',
+  },
+  currentNote: {
+    color: '#0059b2',
+    marginBottom: 10,
+    fontWeight: '800',
   },
 });

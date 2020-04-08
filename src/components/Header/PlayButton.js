@@ -6,15 +6,22 @@ import { defineScale } from '../../helpers/defineScale';
 import { updateScale } from '../../helpers/updateScale';
 
 export default function PlayButton() {
-  const { instrument, key, scale, order, bpm, noteLength } = useContext(
-    Context
-  );
+  const {
+    instrument,
+    key,
+    scale,
+    order,
+    bpm,
+    noteLength,
+    handleSelectionChange,
+  } = useContext(Context);
 
   const renderPlayInfo = () => {
     const scaleInfoObject = defineScale.renderNotes(key, scale);
     scaleInfoObject.instrument = instrument;
     scaleInfoObject.bpm = bpm;
     scaleInfoObject.noteLength = noteLength;
+    scaleInfoObject.handleSelectionChange = handleSelectionChange;
 
     if (order === 'random') {
       updateScale.handleNoteShuffle(scaleInfoObject);

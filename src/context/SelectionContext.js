@@ -10,13 +10,22 @@ export default ({ children }) => {
     order: 'ascending',
     bpm: '125',
     noteLength: 4,
+    activeNote: [],
   });
 
   const handleSelectionChange = (name, itemValue) => {
     setSelectedValue({ ...selectedValues, [name]: itemValue });
   };
 
-  const { instrument, scale, key, order, bpm, noteLength } = selectedValues;
+  const {
+    instrument,
+    scale,
+    key,
+    order,
+    bpm,
+    noteLength,
+    activeNote,
+  } = selectedValues;
 
   const store = {
     instrument,
@@ -25,6 +34,7 @@ export default ({ children }) => {
     order,
     bpm,
     noteLength,
+    activeNote,
     handleSelectionChange,
   };
 
