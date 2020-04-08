@@ -11,7 +11,8 @@ export default function PlayButton() {
   );
 
   const renderPlayInfo = () => {
-    const scaleInfoObject = defineScale.renderNotes(instrument, key, scale);
+    const scaleInfoObject = defineScale.renderNotes(key, scale);
+    scaleInfoObject.instrument = instrument;
     scaleInfoObject.bpm = bpm;
     scaleInfoObject.noteLength = noteLength;
 

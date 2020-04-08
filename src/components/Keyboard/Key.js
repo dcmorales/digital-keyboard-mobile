@@ -2,12 +2,14 @@ import React, { useContext } from 'react';
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
 import { Context } from '../../context/SelectionContext';
+import { defineScale } from '../../helpers/defineScale';
 import { playSound } from '../../helpers/playSound';
 
 export default function Key({ color, note, octNum }) {
-  const { instrument } = useContext(Context);
-  const { white, black, text } = styles;
+  const { instrument, key, scale } = useContext(Context);
+  const { white, black, text, scaleNote } = styles;
   const noteFull = `${note}${octNum}`;
+  const { scaleNotes } = defineScale.renderNotes(key, scale);
 
   return (
     <>
@@ -18,7 +20,12 @@ export default function Key({ color, note, octNum }) {
         onPress={() => playSound.handleNoteSound(instrument, `${noteFull}`)}
       >
         <View style={text}>
-          <Text style={color === 'black' ? { color: '#fff' } : null}>
+          <Text
+            style={[
+              color === 'black' ? { color: '#fff' } : null,
+              scaleNotes.includes(`${noteFull}`) ? scaleNote : null,
+            ]}
+          >
             {noteFull}
           </Text>
         </View>
@@ -46,5 +53,9 @@ const styles = StyleSheet.create({
     borderColor: '#000',
     flex: 7,
     height: '100%',
+  },
+  scaleNote: {
+    color: '#3399ff',
+    marginBottom: 20,
   },
 });
