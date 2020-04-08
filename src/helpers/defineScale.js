@@ -17,7 +17,7 @@ export const defineScale = {
     const scaleNotes = octave2Notes.concat(octave3notes, lastNote);
 
     if (scale === 'chromatic') {
-      return { scaleNotes };
+      return scaleNotes;
     } else {
       const scaleNum = scaleOpts.indexOf(`${scale}`) - 1;
       //uses defined cut points for each scale to get correct notes in scale
@@ -35,7 +35,7 @@ export const defineScale = {
       const slicePoint = cutPoints[0][indexOfKey][scaleNum];
       const scaleNow = scaleCombined.slice(0, slicePoint);
       const scaleNext = scaleCombined.slice(slicePoint, 8);
-      return { scaleNotes: scaleNow.concat(scaleNext) };
+      return scaleNow.concat(scaleNext);
     }
   },
 };

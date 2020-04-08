@@ -17,11 +17,13 @@ export default function PlayButton() {
   } = useContext(Context);
 
   const renderPlayInfo = () => {
-    const scaleInfoObject = defineScale.renderNotes(key, scale);
-    scaleInfoObject.instrument = instrument;
-    scaleInfoObject.bpm = bpm;
-    scaleInfoObject.noteLength = noteLength;
-    scaleInfoObject.handleSelectionChange = handleSelectionChange;
+    const scaleInfoObject = {
+      scaleNotes: defineScale.renderNotes(key, scale),
+      instrument,
+      bpm,
+      noteLength,
+      handleSelectionChange,
+    };
 
     if (order === 'random') {
       updateScale.handleNoteShuffle(scaleInfoObject);

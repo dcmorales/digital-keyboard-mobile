@@ -9,7 +9,7 @@ export default function Key({ color, note, octNum }) {
   const { instrument, key, scale, activeNote } = useContext(Context);
   const { white, black, text, scaleNote, currentNote } = styles;
   const noteFull = `${note}${octNum}`;
-  const { scaleNotes } = defineScale.renderNotes(key, scale);
+  const scaleNotes = defineScale.renderNotes(key, scale);
 
   return (
     <>
