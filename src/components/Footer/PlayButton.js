@@ -13,6 +13,8 @@ export default function PlayButton() {
     order,
     bpm,
     noteLength,
+    totalBeats,
+    playx,
     handleSelectionChange,
   } = useContext(Context);
 
@@ -22,6 +24,8 @@ export default function PlayButton() {
       instrument,
       bpm,
       noteLength,
+      totalBeats,
+      playx,
       handleSelectionChange,
     };
 

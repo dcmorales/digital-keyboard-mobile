@@ -11,6 +11,8 @@ export default ({ children }) => {
     bpm: '125',
     noteLength: 4,
     activeNote: [],
+    totalBeats: '13',
+    playx: 0,
   });
 
   const handleSelectionChange = (name, itemValue) => {
@@ -25,6 +27,8 @@ export default ({ children }) => {
     bpm,
     noteLength,
     activeNote,
+    totalBeats,
+    playx,
   } = selectedValues;
 
   const store = {
@@ -35,6 +39,8 @@ export default ({ children }) => {
     bpm,
     noteLength,
     activeNote,
+    totalBeats,
+    playx,
     handleSelectionChange,
   };
 

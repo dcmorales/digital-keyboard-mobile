@@ -7,9 +7,16 @@ import { selectionOptions } from '../../values/selectionOptions';
 import Selections from './Selections';
 
 export default function Header() {
-  const { instrument, scale, key, order, bpm, noteLength } = useContext(
-    Context
-  );
+  const {
+    instrument,
+    scale,
+    key,
+    order,
+    bpm,
+    noteLength,
+    playx,
+    totalBeats,
+  } = useContext(Context);
   const { instrumentOpts, scaleOpts, keyOpts, orderOpts } = selectionOptions;
 
   return (
@@ -42,6 +49,23 @@ export default function Header() {
         start="4"
         max="32"
       />
+
+      {order !== 'random' ? null : (
+        <>
+          <Selections
+            selectionValue={totalBeats}
+            listName="totalBeats"
+            start="1"
+            max="13"
+          />
+          <Selections
+            selectionValue={playx}
+            listName="playx"
+            start="1"
+            max="8"
+          />
+        </>
+      )}
     </View>
   );
 }
