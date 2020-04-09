@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Button } from 'react-native';
 
 import { Context } from '../../context/SelectionContext';
@@ -18,17 +18,27 @@ export default function PlayButton() {
     handleSelectionChange,
   } = useContext(Context);
 
-  const renderPlayInfo = () => {
-    const scaleInfoObject = {
-      scaleNotes: defineScale.renderNotes(key, scale),
-      instrument,
-      bpm,
-      noteLength,
-      totalBeats,
-      playx,
-      handleSelectionChange,
-    };
+  const scaleInfoObject = {
+    scaleNotes: defineScale.renderNotes(key, scale),
+    instrument,
+    bpm,
+    noteLength,
+    totalBeats,
+    playx,
+    handleSelectionChange,
+  };
 
+  useEffect(() => {
+    if (order === 'random') {
+      handleSelectionChange('maxBeats', `${scaleInfoObject.scaleNotes.length}`);
+      handleSelectionChange(
+        'totalBeats',
+        `${scaleInfoObject.scaleNotes.length}`
+      );
+    }
+  }, [scale]);
+
+  const renderPlayInfo = () => {
     if (order === 'random') {
       updateScale.handleNoteShuffle(scaleInfoObject);
     } else {

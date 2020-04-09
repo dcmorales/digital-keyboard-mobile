@@ -12,7 +12,8 @@ export default ({ children }) => {
     noteLength: 4,
     activeNote: [],
     totalBeats: '13',
-    playx: 0,
+    playx: '1',
+    maxBeats: '13',
   });
 
   const handleSelectionChange = (name, itemValue) => {
@@ -29,6 +30,7 @@ export default ({ children }) => {
     activeNote,
     totalBeats,
     playx,
+    maxBeats,
   } = selectedValues;
 
   const store = {
@@ -41,6 +43,7 @@ export default ({ children }) => {
     activeNote,
     totalBeats,
     playx,
+    maxBeats,
     handleSelectionChange,
   };
 

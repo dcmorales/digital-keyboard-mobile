@@ -16,6 +16,7 @@ export default function Header() {
     noteLength,
     playx,
     totalBeats,
+    maxBeats,
   } = useContext(Context);
   const { instrumentOpts, scaleOpts, keyOpts, orderOpts } = selectionOptions;
 
@@ -56,7 +57,7 @@ export default function Header() {
             selectionValue={totalBeats}
             listName="totalBeats"
             start="1"
-            max="13"
+            max={maxBeats}
           />
           <Selections
             selectionValue={playx}
