@@ -1,20 +1,27 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import Keyboard from './src/components/Keyboard';
+import Header from './src/components/Header/Header';
+import Keyboard from './src/components/Keyboard/Keyboard';
+import Footer from './src/components/Footer/Footer';
+import SelectionStore from './src/context/SelectionContext';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Keyboard />
-    </View>
+    <SelectionStore>
+      <View style={styles.container}>
+        <Header />
+        <Keyboard />
+        <Footer />
+      </View>
+    </SelectionStore>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'column',
     borderWidth: 10,
     borderColor: '#0059b2',
   },
