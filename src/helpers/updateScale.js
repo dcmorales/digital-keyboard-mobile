@@ -36,11 +36,14 @@ export const updateScale = {
         : //playx === '1'
           scaleNotes;
 
+    scaleInfoObject.notesDisplayed = scaleNotes;
     scaleInfoObject.scaleNotes = notesRepeated;
     this.handleScaleNotes(scaleInfoObject);
   },
 
   handleScaleNotes(scaleInfoObject) {
+    const { getNotesPlayed, notesDisplayed } = scaleInfoObject;
+    getNotesPlayed(notesDisplayed);
     playScale.playNotes(scaleInfoObject);
   },
 };
