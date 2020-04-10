@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+import { defineScale } from '../helpers/defineScale';
 
 export const Context = React.createContext();
 
@@ -33,6 +35,26 @@ export default ({ children }) => {
     maxBeats,
   } = selectedValues;
 
+  const scaleInfoObject = {
+    scaleNotes: defineScale.renderNotes(key, scale),
+    instrument,
+    bpm,
+    noteLength,
+    totalBeats,
+    playx,
+    handleSelectionChange,
+  };
+
+  useEffect(() => {
+    if (order === 'random') {
+      handleSelectionChange('maxBeats', `${scaleInfoObject.scaleNotes.length}`);
+      handleSelectionChange(
+        'totalBeats',
+        `${scaleInfoObject.scaleNotes.length}`
+      );
+    }
+  }, [scale]);
+
   const store = {
     instrument,
     scale,
@@ -44,6 +66,7 @@ export default ({ children }) => {
     totalBeats,
     playx,
     maxBeats,
+    scaleInfoObject,
     handleSelectionChange,
   };
 
