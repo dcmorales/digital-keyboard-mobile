@@ -5,12 +5,13 @@ import Header from './src/components/Header/Header';
 import Keyboard from './src/components/Keyboard/Keyboard';
 import Footer from './src/components/Footer/Footer';
 import SelectionStore from './src/context/SelectionContext';
+import PlaySettings from './src/components/Header/PlaySettings';
 
 export default function App() {
   return (
     <SelectionStore>
       <View style={styles.container}>
-        <Header />
+        <PlaySettings />
         <Keyboard />
         <Footer />
       </View>
