@@ -1,74 +1,81 @@
-import React, { Component, useState } from 'react';
-import {
-  Modal,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  View,
-} from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import React, { useContext } from 'react';
+import { StyleSheet, View } from 'react-native';
 
-import Header from './Header';
-const PlaySettings = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+import { Context } from '../../context/SelectionContext';
+import { selectionOptions } from '../../values/selectionOptions';
+
+import Selections from './Selections';
+
+export default function PlaySettings() {
+  const {
+    instrument,
+    scale,
+    key,
+    order,
+    bpm,
+    noteLength,
+    playx,
+    totalBeats,
+    maxBeats,
+  } = useContext(Context);
+  const { instrumentOpts, scaleOpts, keyOpts, orderOpts } = selectionOptions;
 
   return (
-    <View>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(false);
-        }}
-      >
-        <View style={styles.modalView}>
-          <Header />
+    <View style={styles.playSettingsContainer}>
+      <Selections
+        selectionValue={instrument}
+        listName="instrument"
+        listItems={instrumentOpts}
+      />
 
-          <TouchableHighlight
-            style={{ backgroundColor: '#2196F3' }}
-            onPress={() => {
-              setModalVisible(!modalVisible);
-            }}
-          >
-            <Text>Close</Text>
-          </TouchableHighlight>
-        </View>
-      </Modal>
+      <Selections
+        selectionValue={scale}
+        listName="scale"
+        listItems={scaleOpts}
+      />
 
-      <TouchableHighlight
-        onPress={() => {
-          setModalVisible(true);
-        }}
-      >
-        <FontAwesome name="gear" size={20} />
-      </TouchableHighlight>
+      <Selections selectionValue={key} listName="key" listItems={keyOpts} />
+
+      <Selections
+        selectionValue={order}
+        listName="order"
+        listItems={orderOpts}
+      />
+
+      <Selections selectionValue={bpm} listName="bpm" start="100" max="130" />
+
+      <Selections
+        selectionValue={noteLength}
+        listName="noteLength"
+        start="4"
+        max="32"
+      />
+
+      {order !== 'random' ? null : (
+        <>
+          <Selections
+            selectionValue={totalBeats}
+            listName="totalBeats"
+            start="1"
+            max={maxBeats}
+          />
+          <Selections
+            selectionValue={playx}
+            listName="playx"
+            start="1"
+            max="8"
+          />
+        </>
+      )}
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  centeredView: {
-    flex: 1,
+  playSettingsContainer: {
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 22,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    marginHorizontal: 5,
   },
 });
-
-export default PlaySettings;
