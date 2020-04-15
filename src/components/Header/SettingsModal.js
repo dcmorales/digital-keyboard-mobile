@@ -7,7 +7,6 @@ import PlaySettings from './PlaySettings';
 
 export default function Header() {
   const [modalVisible, setModalVisible] = useState(false);
-  const { modalView, closeButton } = styles;
 
   return (
     <View>
@@ -17,13 +16,13 @@ export default function Header() {
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)}
       >
-        <View style={modalView}>
+        <View style={styles.modalView}>
           <PlaySettings />
 
           <Button
             raised
             title="Close"
-            buttonStyle={closeButton}
+            buttonStyle={{ paddingHorizontal: 50 }}
             onPress={() => setModalVisible(!modalVisible)}
           />
         </View>
@@ -52,11 +51,5 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
-  },
-  closeButton: {
-    backgroundColor: '#0059b2',
-    borderColor: '#3399ff',
-    borderWidth: 2.5,
-    paddingHorizontal: 50,
   },
 });

@@ -18,7 +18,8 @@ export default function Footer() {
 const styles = StyleSheet.create({
   footerContainer: {
     backgroundColor: '#0059b2',
+    paddingTop: 5,
+    paddingLeft: 5,
     flexDirection: 'row',
-    justifyContent: 'space-around',
   },
 });
