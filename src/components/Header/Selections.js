@@ -4,6 +4,7 @@ import { Picker, Text, StyleSheet, View } from 'react-native';
 import { Context } from '../../context/SelectionContext';
 
 export default function Selections({
+  label,
   listName,
   listItems,
   selectionValue,
@@ -12,6 +13,7 @@ export default function Selections({
 }) {
   const { handleSelectionChange } = useContext(Context);
   const [options, setOptions] = useState([]);
+  const { selectionContainer, selectionLabel, picker } = styles;
 
   useEffect(() => {
     if (listItems) {
@@ -27,9 +29,10 @@ export default function Selections({
   }, []);
 
   return (
-    <View style={styles.selectionContainer}>
-      <Text>{listName}</Text>
+    <View style={selectionContainer}>
+      <Text style={selectionLabel}>{label}</Text>
       <Picker
+        style={picker}
         selectedValue={selectionValue}
         onValueChange={itemValue => handleSelectionChange(listName, itemValue)}
       >
@@ -48,5 +51,15 @@ export default function Selections({
 const styles = StyleSheet.create({
   selectionContainer: {
     flex: 1,
+  },
+  selectionLabel: {
+    borderLeftWidth: 1,
+    paddingLeft: 7,
+    borderColor: '#2196F3',
+    color: '#0059b2',
+    fontWeight: '700',
+  },
+  picker: {
+    color: '#2196F3',
   },
 });

@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
-import {
-  Modal,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  View,
-} from 'react-native';
+import { Modal, StyleSheet, View } from 'react-native';
+import { Button } from 'react-native-elements';
 import { FontAwesome } from '@expo/vector-icons';
 
 import PlaySettings from './PlaySettings';
 
 export default function Header() {
   const [modalVisible, setModalVisible] = useState(false);
+  const { modalView, closeButton } = styles;
 
   return (
     <View>
@@ -21,21 +17,22 @@ export default function Header() {
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)}
       >
-        <View style={styles.modalView}>
+        <View style={modalView}>
           <PlaySettings />
 
-          <TouchableHighlight
-            style={{ backgroundColor: '#2196F3' }}
+          <Button
+            raised
+            title="Close"
+            buttonStyle={closeButton}
             onPress={() => setModalVisible(!modalVisible)}
-          >
-            <Text>Close</Text>
-          </TouchableHighlight>
+          />
         </View>
       </Modal>
 
-      <TouchableHighlight onPress={() => setModalVisible(true)}>
-        <FontAwesome name="gear" size={20} />
-      </TouchableHighlight>
+      <Button
+        icon={<FontAwesome name="gear" size={20} color="#fff" />}
+        onPress={() => setModalVisible(true)}
+      />
     </View>
   );
 }
@@ -55,5 +52,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+  },
+  closeButton: {
+    backgroundColor: '#0059b2',
+    borderColor: '#3399ff',
+    borderWidth: 2.5,
+    paddingHorizontal: 50,
   },
 });
