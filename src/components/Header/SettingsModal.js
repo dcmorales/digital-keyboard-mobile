@@ -42,7 +42,7 @@ export default function Header() {
 
 const styles = StyleSheet.create({
   modalView: {
-    margin: 15,
+    margin: 20,
     backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
