@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Header as HeaderElement } from 'react-native-elements';
 
-import SettingsOverlay from './SettingsOverlay';
+import SettingsButton from './SettingsButton';
 
 export default function Header() {
   const { headerContainer, title } = styles;
@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <HeaderElement
       centerComponent={{ text: 'Digital Keyboard', style: title }}
-      rightComponent={<SettingsOverlay />}
+      rightComponent={<SettingsButton />}
       containerStyle={headerContainer}
     />
   );

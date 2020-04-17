@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Context } from '../../context/SelectionContext';
-import { selectionOptions } from '../../values/selectionOptions';
+import { Context } from '../../../context/SelectionContext';
+import { selectionOptions } from '../../../values/selectionOptions';
+import { selectionInfo } from '../../../values/selectionInfo';
 
-import Selections from './Selections';
+import SelectionDetail from './SelectionDetail';
 
-export default function PlaySettings() {
+export default function Selections() {
   const {
     instrument,
     scale,
@@ -19,34 +20,48 @@ export default function PlaySettings() {
     maxBeats,
   } = useContext(Context);
   const { instrumentOpts, scaleOpts, keyOpts, orderOpts } = selectionOptions;
+  const {
+    instrumentInfo,
+    scaleInfo,
+    keyInfo,
+    orderInfo,
+    bpmInfo,
+    noteLengthInfo,
+    totalBeatsInfo,
+    playxInfo,
+  } = selectionInfo;
   const { playSettingsContainer, settingsRowContainer } = styles;
 
   return (
     <View style={playSettingsContainer}>
       <View style={settingsRowContainer}>
-        <Selections
+        <SelectionDetail
           selectionValue={instrument}
+          info={instrumentInfo}
           label="Instrument"
           listName="instrument"
           listItems={instrumentOpts}
         />
 
-        <Selections
+        <SelectionDetail
           selectionValue={scale}
+          info={scaleInfo}
           label="Scale"
           listName="scale"
           listItems={scaleOpts}
         />
 
-        <Selections
+        <SelectionDetail
           selectionValue={key}
+          info={keyInfo}
           label="Key"
           listName="key"
           listItems={keyOpts}
         />
 
-        <Selections
+        <SelectionDetail
           selectionValue={noteLength}
+          info={noteLengthInfo}
           label="Note Length"
           listName="noteLength"
           start="4"
@@ -55,15 +70,17 @@ export default function PlaySettings() {
       </View>
 
       <View style={settingsRowContainer}>
-        <Selections
+        <SelectionDetail
           selectionValue={order}
+          info={orderInfo}
           label="Order"
           listName="order"
           listItems={orderOpts}
         />
 
-        <Selections
+        <SelectionDetail
           selectionValue={bpm}
+          info={bpmInfo}
           label="BPM"
           listName="bpm"
           start="100"
@@ -72,15 +89,17 @@ export default function PlaySettings() {
 
         {order !== 'random' ? null : (
           <>
-            <Selections
+            <SelectionDetail
               selectionValue={totalBeats}
+              info={totalBeatsInfo}
               label="Total Beats"
               listName="totalBeats"
               start="1"
               max={maxBeats}
             />
-            <Selections
+            <SelectionDetail
               selectionValue={playx}
+              info={playxInfo}
               label="Play x"
               listName="playx"
               start="1"

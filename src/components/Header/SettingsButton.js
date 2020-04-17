@@ -3,9 +3,9 @@ import { StyleSheet, View } from 'react-native';
 import { Button, Overlay } from 'react-native-elements';
 import { FontAwesome } from '@expo/vector-icons';
 
-import PlaySettings from './PlaySettings';
+import Selections from './Selections/Selections';
 
-export default function SettingsOverlay() {
+export default function SettingsButton() {
   const [overlayVisible, setOverlayVisible] = useState(false);
 
   return (
@@ -17,7 +17,7 @@ export default function SettingsOverlay() {
         onBackdropPress={() => setOverlayVisible(false)}
       >
         <View style={styles.overlayView}>
-          <PlaySettings />
+          <Selections />
 
           <Button
             raised
