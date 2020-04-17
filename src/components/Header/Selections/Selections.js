@@ -49,6 +49,7 @@ export default function Selections() {
           label="Scale"
           listName="scale"
           listItems={scaleOpts}
+          height={200}
         />
 
         <SelectionDetail
@@ -66,6 +67,7 @@ export default function Selections() {
           listName="noteLength"
           start="4"
           max="32"
+          height={85}
         />
       </View>
 
@@ -76,6 +78,7 @@ export default function Selections() {
           label="Order"
           listName="order"
           listItems={orderOpts}
+          height={140}
         />
 
         <SelectionDetail
@@ -85,6 +88,7 @@ export default function Selections() {
           listName="bpm"
           start="100"
           max="130"
+          height={60}
         />
 
         {order !== 'random' ? null : (
@@ -96,6 +100,7 @@ export default function Selections() {
               listName="totalBeats"
               start="1"
               max={maxBeats}
+              height={120}
             />
             <SelectionDetail
               selectionValue={playx}
@@ -104,6 +109,7 @@ export default function Selections() {
               listName="playx"
               start="1"
               max="8"
+              height={95}
             />
           </>
         )}

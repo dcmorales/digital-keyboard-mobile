@@ -12,10 +12,11 @@ export default function SelectionDetail({
   start,
   max,
   info,
+  height,
 }) {
   return (
     <View style={{ flex: 1 }}>
-      <SelectionLabel info={info} label={label} />
+      <SelectionLabel info={info} label={label} height={height} />
 
       <DropdownOptions
         selectionValue={selectionValue}
