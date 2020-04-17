@@ -1,47 +1,46 @@
 import React, { useState } from 'react';
-import { Modal, StyleSheet, View } from 'react-native';
-import { Button } from 'react-native-elements';
+import { StyleSheet, View } from 'react-native';
+import { Button, Overlay } from 'react-native-elements';
 import { FontAwesome } from '@expo/vector-icons';
 
 import PlaySettings from './PlaySettings';
 
-export default function Header() {
-  const [modalVisible, setModalVisible] = useState(false);
+export default function SettingsOverlay() {
+  const [overlayVisible, setOverlayVisible] = useState(false);
 
   return (
     <View>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => setModalVisible(false)}
+      <Overlay
+        isVisible={overlayVisible}
+        overlayBackgroundColor="rgba(255, 255, 255, .5)"
+        overlayStyle={{ borderRadius: 20, height: 'auto' }}
+        onBackdropPress={() => setOverlayVisible(false)}
       >
-        <View style={styles.modalView}>
+        <View style={styles.overlayView}>
           <PlaySettings />
 
           <Button
             raised
             title="Close"
             buttonStyle={{ paddingHorizontal: 50 }}
-            onPress={() => setModalVisible(!modalVisible)}
+            onPress={() => setOverlayVisible(!overlayVisible)}
           />
         </View>
-      </Modal>
+      </Overlay>
 
       <Button
         icon={<FontAwesome name="gear" size={20} color="#fff" />}
-        onPress={() => setModalVisible(true)}
+        onPress={() => setOverlayVisible(true)}
       />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  modalView: {
-    margin: 20,
+  overlayView: {
     backgroundColor: 'white',
     borderRadius: 20,
-    padding: 35,
+    padding: 15,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
