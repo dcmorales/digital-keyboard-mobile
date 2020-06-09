@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#0059b2',
+    paddingLeft: 15,
   },
   notesTitle: {
     color: '#f7f7f7',

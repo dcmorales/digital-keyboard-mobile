@@ -16,5 +16,7 @@ const styles = StyleSheet.create({
   keyboard: {
     flex: 1,
     flexDirection: 'row',
+    borderTopWidth: 1,
+    borderColor: '#3399ff',
   },
 });

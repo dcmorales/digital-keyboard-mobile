@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button } from 'react-native';
+import { Button } from 'react-native-elements';
 
 import { Context } from '../../context/SelectionContext';
 import { updateScale } from '../../helpers/updateScale';
@@ -20,5 +20,11 @@ export default function PlayButton({ getNotesPlayed }) {
     }
   };
 
-  return <Button title="Play Keys" onPress={() => renderPlayInfo()} />;
+  return (
+    <Button
+      title="Play Keys"
+      buttonStyle={{ paddingHorizontal: 35 }}
+      onPress={() => renderPlayInfo()}
+    />
+  );
 }
