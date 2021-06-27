@@ -3,7 +3,7 @@
     "name": "Digital-Keyboard",
     "slug": "digital-keyboard-mobile",
     "privacy": "public",
-    "sdkVersion": "36.0.0",
+    "sdkVersion": "38.0.0",
     "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "landscape",
